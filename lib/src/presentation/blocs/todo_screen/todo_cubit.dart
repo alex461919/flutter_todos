@@ -34,6 +34,7 @@ class TodoCubit extends Cubit<TodoCubitState> {
       }
     });
   }
+
   Future<void> updateTodo(TodoEntity todo) async {
     emit(state.copyWith(process: Process.update));
     try {
@@ -50,8 +51,8 @@ class TodoCubit extends Cubit<TodoCubitState> {
     try {
       await _deleteTodoUseCase.call(DeleteTodoUseCaseParams(todo));
       emit(state.copyWith(process: Process.dispose));
-    } on Object catch (error) {
-      emit(state.copyWith(process: Process.reject, exception: error as Exception));
+    } on Exception catch (error) {
+      emit(state.copyWith(process: Process.reject, exception: error));
     }
   }
 

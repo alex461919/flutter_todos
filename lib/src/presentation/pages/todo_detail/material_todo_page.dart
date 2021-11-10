@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:auto_route/auto_route.dart';
 import 'package:datetime_picker_formfield/datetime_picker_formfield.dart';
 import 'package:flutter/material.dart';
@@ -46,11 +44,7 @@ class MaterialTodoPage extends StatelessWidget implements AutoRouteWrapper {
                   leading: IconButton(
                     icon: const Icon(Icons.arrow_back),
                     onPressed: () {
-                      if (context.router.stackData.length == 1) {
-                        context.router.replaceNamed('/');
-                      } else {
-                        context.router.popUntilRoot();
-                      }
+                      navigateToHome(context);
                     },
                   ),
                 ),
@@ -64,36 +58,14 @@ class MaterialTodoPage extends StatelessWidget implements AutoRouteWrapper {
                               (previous.process == Process.update || previous.process == Process.delete)),
                       listener: (context, state) {
                         if (state.process == Process.reject) {
-                          showDialog<void>(
-                            context: context,
-                            barrierDismissible: false,
-                            barrierColor: Colors.white54,
-                            builder: (context) {
-                              return AlertDialog(
-                                title: const Text('Ошибка!'),
-                                content: Text(state.exception.toString()).textColor(Theme.of(context).errorColor),
-                                actions: [
-                                  TextButton(
-                                    child: const Text('ПОНЯЛ'),
-                                    onPressed: () {
-                                      Navigator.of(context).pop();
-                                    },
-                                  ),
-                                ],
-                              );
-                            },
-                          );
+                          showErrorMessage(context, state.exception);
                         } else if (state.process == Process.dispose) {
-                          if (context.router.stackData.length == 1) {
-                            context.router.replaceNamed('/');
-                          } else {
-                            context.router.popUntilRoot();
-                          }
+                          navigateToHome(context);
                         } else if (state.process == Process.fulfilled) {
                           ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Успешно')));
                         }
                       },
-                      builder: (context, state) {                        
+                      builder: (context, state) {
                         return [
                           child,
                           if (state.process == Process.pending ||

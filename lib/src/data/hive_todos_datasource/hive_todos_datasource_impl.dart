@@ -80,8 +80,8 @@ class HiveTodosDataSourceImpl implements TodosDataSource {
 
   @override
   Future<void> addTodo(TodoModel todo) async {
-    if (todo.id != null) throw Exception('Unable to add todo, id should be null.');
     await Future<void>.delayed(const Duration(milliseconds: 500));
+    if (todo.id != null) throw Exception('Unable to add todo, id should be null.');
     if (_random.nextDouble() < 0.3) throw Exception('This is test error add todo.');
     await _todoBox.add(_mappers.mapTodoFromModel(todo).value);
   }

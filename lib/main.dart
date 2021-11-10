@@ -15,7 +15,7 @@ import 'package:flutter_todos/src/presentation/pages/todo_list/material_todo_lis
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await initializeDependencies();
-  Bloc.observer = AppBlocObserver();
+  //Bloc.observer = AppBlocObserver();
   runApp(
     BlocProvider<DateRangeBloc>(create: (_) => injector(), child: MaterialTodosApp()),
   );

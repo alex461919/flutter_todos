@@ -48,6 +48,36 @@ Future<T> futureWithProgressAndModalError<T>(BuildContext context, Future<T> fut
     );
 }
 
+void navigateToHome(BuildContext context) {
+  if (context.router.stackData.length == 1) {
+    context.router.replaceNamed('/');
+  } else {
+    context.router.popUntilRoot();
+  }
+}
+
+void showErrorMessage(BuildContext context, Exception? exception) {
+  showDialog<void>(
+    context: context,
+    barrierDismissible: false,
+    barrierColor: Colors.white54,
+    builder: (context) {
+      return AlertDialog(
+        title: const Text('Ошибка!'),
+        content: Text(exception.toString()).textColor(Theme.of(context).errorColor),
+        actions: [
+          TextButton(
+            child: const Text('ПОНЯЛ'),
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+          ),
+        ],
+      );
+    },
+  );
+}
+
 class WaitIndicator extends StatelessWidget {
   const WaitIndicator({Key? key}) : super(key: key);
 
