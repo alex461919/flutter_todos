@@ -7,6 +7,8 @@
 // **************************************************************************
 // AutoRouteGenerator
 // **************************************************************************
+//
+// ignore_for_file: type=lint
 
 import 'package:auto_route/auto_route.dart' as _i4;
 import 'package:flutter/cupertino.dart' as _i6;
@@ -31,7 +33,7 @@ class AppRouter extends _i4.RootStackRouter {
           routeData: routeData, child: const _i2.MaterialTodoAddPage());
     },
     MaterialTodoRoute.name: (routeData) {
-      final pathParams = routeData.pathParams;
+      final pathParams = routeData.inheritedPathParams;
       final args = routeData.argsAs<MaterialTodoRouteArgs>(
           orElse: () => MaterialTodoRouteArgs(id: pathParams.getString('id')));
       return _i4.MaterialPageX<_i6.StatelessWidget>(
@@ -78,25 +80,28 @@ class AppRouter extends _i4.RootStackRouter {
       ];
 }
 
-/// generated route for [_i1.MaterialTodoListPage]
+/// generated route for
+/// [_i1.MaterialTodoListPage]
 class MaterialTodoListRoute extends _i4.PageRouteInfo<void> {
-  const MaterialTodoListRoute() : super(name, path: '/');
+  const MaterialTodoListRoute() : super(MaterialTodoListRoute.name, path: '/');
 
   static const String name = 'MaterialTodoListRoute';
 }
 
-/// generated route for [_i2.MaterialTodoAddPage]
+/// generated route for
+/// [_i2.MaterialTodoAddPage]
 class MaterialTodoAddRoute extends _i4.PageRouteInfo<void> {
-  const MaterialTodoAddRoute() : super(name, path: '/add');
+  const MaterialTodoAddRoute() : super(MaterialTodoAddRoute.name, path: '/add');
 
   static const String name = 'MaterialTodoAddRoute';
 }
 
-/// generated route for [_i3.MaterialTodoPage]
+/// generated route for
+/// [_i3.MaterialTodoPage]
 class MaterialTodoRoute extends _i4.PageRouteInfo<MaterialTodoRouteArgs> {
   MaterialTodoRoute(
       {required String id, _i6.Key? key, List<_i4.PageRouteInfo>? children})
-      : super(name,
+      : super(MaterialTodoRoute.name,
             path: '/:id',
             args: MaterialTodoRouteArgs(id: id, key: key),
             rawPathParams: {'id': id},
@@ -111,32 +116,41 @@ class MaterialTodoRouteArgs {
   final String id;
 
   final _i6.Key? key;
+
+  @override
+  String toString() {
+    return 'MaterialTodoRouteArgs{id: $id, key: $key}';
+  }
 }
 
-/// generated route for [_i3.MaterialTodoDetailWidget]
+/// generated route for
+/// [_i3.MaterialTodoDetailWidget]
 class DetailTab extends _i4.PageRouteInfo<void> {
-  const DetailTab() : super(name, path: 'detail');
+  const DetailTab() : super(DetailTab.name, path: 'detail');
 
   static const String name = 'DetailTab';
 }
 
-/// generated route for [_i3.MaterialTodoEditWidget]
+/// generated route for
+/// [_i3.MaterialTodoEditWidget]
 class EditTab extends _i4.PageRouteInfo<void> {
-  const EditTab() : super(name, path: 'edit');
+  const EditTab() : super(EditTab.name, path: 'edit');
 
   static const String name = 'EditTab';
 }
 
-/// generated route for [_i3.MaterialStateEditWidget]
+/// generated route for
+/// [_i3.MaterialStateEditWidget]
 class StateEditTab extends _i4.PageRouteInfo<void> {
-  const StateEditTab() : super(name, path: 'state_edit');
+  const StateEditTab() : super(StateEditTab.name, path: 'state_edit');
 
   static const String name = 'StateEditTab';
 }
 
-/// generated route for [_i3.MaterialTodoDeleteWidget]
+/// generated route for
+/// [_i3.MaterialTodoDeleteWidget]
 class DeleteTab extends _i4.PageRouteInfo<void> {
-  const DeleteTab() : super(name, path: 'delete');
+  const DeleteTab() : super(DeleteTab.name, path: 'delete');
 
   static const String name = 'DeleteTab';
 }

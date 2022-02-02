@@ -14,7 +14,7 @@
 
 - [styled_widget](https://pub.dev/packages/styled_widget). Изрядно уменьшает количество кода.
 
-- [auto_route](https://pub.dev/packages/auto_route). Это совсем избыточно, достаточно было бы использовать и navigation 1.0 onGenerateRoute, подходящий и для куда более серьезных задач. Если для полноценной поддержки web разве что.
+- [auto_route](https://pub.dev/packages/auto_route). Это совсем избыточно, достаточно было бы использовать и navigation 1.0 onGenerateRoute, подходящий и для куда более серьезных задач. Если для полноценной поддержки web, разве что.
 
 - Service Locator [get_it](https://pub.dev/packages/get_it) для DI.
 
